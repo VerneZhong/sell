@@ -1,0 +1,37 @@
+# 服务名称
+spring:
+  application:
+    name: config
+  #设置使用本地配置(默认是git,可以设置：subversion(SVN)，native(本地))
+#  profiles:
+#    active: git
+  #  配置中心
+  cloud:
+    config:
+      server:
+        #如下是GIT配置
+        git:
+          uri: https://github.com/zhongxuebinwin8/config-repo.git
+          username: zhongxuebin171980062@gmail.com
+          password: "@Wwindows8"
+#          本地配置存放仓库路径
+          basedir: /Users/zhongxuebin/IdeaProjects/sell/sell_config/basedir
+#          default-label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+# 服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.105:8761/eureka/
+server:
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

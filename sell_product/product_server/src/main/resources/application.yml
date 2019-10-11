@@ -1,0 +1,23 @@
+# 服务名称
+spring:
+  application:
+    name: product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 12345678
+    url: jdbc:mysql://127.0.0.1:3306/springcloud_sell?characterEncoding=UTF-8
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+
+# 服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.105:8761/eureka/

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sell_product</artifactId>
+        <groupId>com.zxb</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>product_client</artifactId>
+
+<!--
+        将本地jar包推送到本地仓库
+        mvn install:install-file -Dfile=product_common-1.0-SNAPSHOT.jar -DgroupId=com.zxb
+        -DartifactId=product_common -Dversion=2.0.1 -Dpackaging=jar
+        -->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+            <version>${spring-cloud-openfeign-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zxb</groupId>
+            <artifactId>product_common</artifactId>
+            <version>${product-common.version}</version>
+        </dependency>
+    </dependencies>
+</project>
