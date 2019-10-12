@@ -1,0 +1,16 @@
+# 服务名称
+spring:
+  application:
+    name: product
+  profiles:
+    active: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+# 服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.105:8761/eureka/

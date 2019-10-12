@@ -1,5 +1,7 @@
 package com.zxb.product.service;
 
+import com.zxb.product.common.domain.DecreaseStockInput;
+import com.zxb.product.common.domain.ProductInfoOutput;
 import com.zxb.product.dto.CartDTO;
 import com.zxb.product.model.ProductInfo;
 
@@ -15,7 +17,7 @@ public interface ProductService {
 
     List<ProductInfo> findUpAll();
 
-    List<ProductInfo> findList(List<String> productIds);
+    List<ProductInfoOutput> findList(List<String> productIds);
 
-    void decreaseStock(List<CartDTO> cartDTOS);
+    void decreaseStock(List<DecreaseStockInput> cartDTOS);
 }

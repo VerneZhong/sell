@@ -10,14 +10,14 @@ spring:
         enabled: true
         service-id: config
 #   修复Spring Cloud Bus不自动刷新配置的问题
-    bus:
-      id: ${vcap.application.name:${spring.application.name:application}}:${vcap.application.instance_index:${spring.profiles.active:${local.server.port:${server.port:0}}}}:${vcap.application.instance_id:${random.value}}
-    # 分组
-    stream:
-      bindings:
-        myMessage:
-          group: order
-          content-type: application/json
+#    bus:
+#      id: ${vcap.application.name:${spring.application.name:application}}:${vcap.application.instance_index:${spring.profiles.active:${local.server.port:${server.port:0}}}}:${vcap.application.instance_id:${random.value}}
+#    # 分组
+#    stream:
+#      bindings:
+#        myMessage:
+#          group: order
+#          content-type: application/json
 eureka:
   client:
     service-url:

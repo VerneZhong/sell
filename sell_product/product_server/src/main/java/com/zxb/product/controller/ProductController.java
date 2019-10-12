@@ -1,5 +1,7 @@
 package com.zxb.product.controller;
 
+import com.zxb.product.common.domain.DecreaseStockInput;
+import com.zxb.product.common.domain.ProductInfoOutput;
 import com.zxb.product.dto.CartDTO;
 import com.zxb.product.model.ProductCategory;
 import com.zxb.product.model.ProductInfo;
@@ -62,12 +64,12 @@ public class ProductController {
      * @return
      */
     @PostMapping("/listForOrder")
-    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+    public List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList) {
         return productService.findList(productIdList);
     }
 
     @PostMapping("/decreaseStock")
-    public void decreaseStock(@RequestBody List<CartDTO> cartDTOS) {
-        productService.decreaseStock(cartDTOS);
+    public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputs) {
+        productService.decreaseStock(decreaseStockInputs);
     }
 }
