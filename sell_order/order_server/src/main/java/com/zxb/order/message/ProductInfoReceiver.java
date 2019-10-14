@@ -27,18 +27,22 @@ public class ProductInfoReceiver {
 
     public static final String PRODUCT_STOCK_TEMPLATE = "product_stock_%s";
 
+    /**
+     * 监听商品服务发来的MQ消息
+     * @param message
+     */
     @RabbitListener(queuesToDeclare = @Queue("productInfo"))
     public void process(String message) {
         // message -> ProductInfoOutput
         JavaType javaType = JsonUtil.createJavaType(List.class, ProductInfoOutput.class);
         List<ProductInfoOutput> productInfoOutputs = JsonUtil.fromJson(message, javaType);
-        log.info("从队列[{}]接收到消息：{}", "productInfo", JsonUtil.toJson(productInfoOutputs));
+        log.info("从队列[{}]接收到商品服务扣库存成功消息：{}", "productInfo", JsonUtil.toJson(productInfoOutputs));
 
         for (ProductInfoOutput productInfoOutput : productInfoOutputs) {
             // 存储到redis
             stringRedisTemplate.opsForValue().set(String.format(PRODUCT_STOCK_TEMPLATE,
                     productInfoOutput.getProductId()),
-                    String.valueOf(productInfoOutput.getProductStock()));
+                    JsonUtil.toJson(productInfoOutput));
         }
     }
 }

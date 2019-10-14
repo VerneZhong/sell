@@ -68,9 +68,8 @@ public class ProductServiceImpl implements ProductService {
             BeanUtils.copyProperties(e, productInfoOutput);
             return productInfoOutput;
         }).collect(Collectors.toList());
-        // 商品服务发送MQ消息，供订单服务获取MQ消息
+        // 扣库存成功后商品服务发送MQ消息，供订单服务获取MQ消息
         amqpTemplate.convertAndSend("productInfo", JsonUtil.toJson(list));
-
     }
 
     @Transactional
