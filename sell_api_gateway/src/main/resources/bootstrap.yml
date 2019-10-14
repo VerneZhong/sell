@@ -1,0 +1,43 @@
+# 服务名称
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: dev
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+# 服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.105:8761/eureka/
+
+zuul:
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
+  routes:
+    # 路由转发 /myProduct/** -> /product/**
+#    myProduct:
+#      path: /myProduct/**
+#      serviceId: product
+    # 简洁写法
+    product: /myProduct/**
+  # 排除访问，禁止被外部访问的路径
+  ignored-patterns:
+    - /**/product/listForOrder
+#    - /myProduct/product/listForOrder
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#  endpoint:
+#    health:
+#      show-details: ALWAYS

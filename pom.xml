@@ -12,6 +12,7 @@
         <module>sell_product</module>
         <module>sell_order</module>
         <module>sell_config</module>
+        <module>sell_api_gateway</module>
     </modules>
 
     <parent>
