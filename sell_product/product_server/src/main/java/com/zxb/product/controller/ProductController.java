@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class ProductController {
     private CategoryService categoryService;
 
     @GetMapping("list")
-    public ResultVO<List<ProductVO>> list() {
+    public ResultVO<List<ProductVO>> list(HttpServletRequest request) {
         
         List<ProductInfo> productInfos = productService.findUpAll();
         List<ProductCategory> categoryList = categoryService.findByCategoryTypeIn(productInfos.stream()
