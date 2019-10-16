@@ -1,6 +1,5 @@
 package com.zxb.api.gateway.filter;
 
-import com.netflix.discovery.util.StringUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -25,7 +24,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * @date 2019-10-15 14:21
  */
 @Component
-public class AuthFilter extends ZuulFilter {
+public class AuthSellerFilter extends ZuulFilter {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -42,35 +41,24 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return false;
+        return "/order/order/finish".equals(RequestContext.getCurrentContext().getRequest().getRequestURI());
     }
 
     @Override
     public Object run() throws ZuulException {
-//        RequestContext requestContext = RequestContext.getCurrentContext();
-//        HttpServletRequest request = requestContext.getRequest();
-
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        HttpServletRequest request = requestContext.getRequest();
         /*
-         * /order/create 只能买家访问(cookie里有openid)
          * /order/finish 只能卖家访问(cookie里有token，并且对应的redis值)
-         * /product/list 都可访问
          */
-//        if ("/order/order/create".equals(request.getRequestURI())) {
-//            Cookie cookie = CookieUtil.get(request, "openid");
-//            if (cookie == null || StringUtils.isEmpty(cookie.getValue())) {
-//                requestContext.setSendZuulResponse(false);
-//                requestContext.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
-//            }
-//        }
-//        if ("/order/order/finish".equals(request.getRequestURI())) {
-//            Cookie cookie = CookieUtil.get(request, "token");
-//            if (cookie == null || StringUtils.isEmpty(cookie.getValue())
-//            || StringUtils.isEmpty(redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE, cookie.getValue())))) {
-//                requestContext.setSendZuulResponse(false);
-//                requestContext.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
-//            }
-//
-//        }
+        Cookie cookie = CookieUtil.get(request, "token");
+        if (cookie == null || StringUtils.isEmpty(cookie.getValue())
+                || StringUtils.isEmpty(redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE,
+                cookie.getValue())))) {
+            requestContext.setSendZuulResponse(false);
+            requestContext.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
+
+        }
         return null;
     }
 }
