@@ -11,4 +11,6 @@ import com.zxb.order.dto.OrderDTO;
 public interface OrderService {
 
     OrderDTO create(OrderDTO orderDTO);
+
+    OrderDTO finish(String orderId);
 }

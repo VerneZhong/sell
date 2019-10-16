@@ -5,6 +5,8 @@ import com.zxb.order.dto.CartDTO;
 import com.zxb.order.dto.OrderDTO;
 import com.zxb.order.enums.OrderStatusEnum;
 import com.zxb.order.enums.PayStatusEnum;
+import com.zxb.order.enums.ResultEnum;
+import com.zxb.order.exception.OrderException;
 import com.zxb.order.message.ProductInfoReceiver;
 import com.zxb.order.model.OrderDetail;
 import com.zxb.order.model.OrderMaster;
@@ -19,11 +21,14 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -54,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
      * @return
      */
     @Override
+    @Transactional
     public OrderDTO create(OrderDTO orderDTO) {
         // 异步扣库存业务分析：
         // 1、读取Redis中库存信息
@@ -112,4 +118,42 @@ public class OrderServiceImpl implements OrderService {
         orderMasterRepository.save(orderMaster);
         return orderDTO;
     }
+
+    /**
+     * 订单完成
+     * @param orderId
+     * @return
+     */
+    @Override
+    @Transactional
+    public OrderDTO finish(String orderId) {
+        // 先查询订单
+        Optional<OrderMaster> optionalOrderMaster = orderMasterRepository.findById(orderId);
+        if (!optionalOrderMaster.isPresent()) {
+            throw new OrderException(ResultEnum.ORDER_NOT_EXIST);
+        }
+
+        // 判断订单状态
+        OrderMaster orderMaster = optionalOrderMaster.get();
+        if (!OrderStatusEnum.NEW.getCode().equals(orderMaster.getOrderStatus())) {
+            throw new OrderException(ResultEnum.ORDER_STATUS_ERROR);
+        }
+
+        // 修改订单状态为完结
+        orderMaster.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
+        orderMasterRepository.save(orderMaster);
+
+        List<OrderDetail> orderDetails = orderDetailRepository.findByOrOrderId(orderId);
+        if (CollectionUtils.isEmpty(orderDetails)) {
+            throw new OrderException(ResultEnum.ORDER_DETAIL_NOT_EXIST);
+        }
+
+        OrderDTO orderDTO = new OrderDTO();
+        BeanUtils.copyProperties(orderMaster, orderDTO);
+        orderDTO.setOrderDetails(orderDetails);
+
+        return orderDTO;
+    }
+
+
 }
