@@ -39,7 +39,12 @@ public class ProductController {
     // 跨域方法一：该方法支持跨域访问
     @CrossOrigin(allowCredentials = "true")
     public ResultVO<List<ProductVO>> list() {
-        
+        // zuul 超时配置，模拟
+//        try {
+//            TimeUnit.SECONDS.sleep(3);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         List<ProductInfo> productInfos = productService.findUpAll();
         List<ProductCategory> categoryList = categoryService.findByCategoryTypeIn(productInfos.stream()
                 .map(ProductInfo::getCategoryType)
@@ -69,11 +74,12 @@ public class ProductController {
      */
     @PostMapping("/listForOrder")
     public List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList) {
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // hystrix 超时模拟
+//        try {
+//            TimeUnit.SECONDS.sleep(2);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return productService.findList(productIdList);
     }
 

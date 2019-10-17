@@ -25,6 +25,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //@EnableCircuitBreaker
 
 @SpringCloudApplication
+// 开启hystrix仪表监控，页面地址：http://localhost:8081/hystrix
 @EnableHystrixDashboard
 public class OrderApplication {
 

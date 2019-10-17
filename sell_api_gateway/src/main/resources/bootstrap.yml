@@ -14,3 +14,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://192.168.1.105:8761/eureka/
+# zuul 引用 hystrix 请求超时时间
+hystrix:
+  command:
+    # 默认的配置超时时间
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
