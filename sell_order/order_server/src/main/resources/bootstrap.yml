@@ -28,3 +28,24 @@ eureka:
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# hystrix请求超时时间
+hystrix:
+  command:
+    # 默认的配置超时时间
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    # command key 对应的方法设置超时时间
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
