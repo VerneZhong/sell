@@ -35,7 +35,9 @@ public class ProductController {
     private CategoryService categoryService;
 
     @GetMapping("list")
-    public ResultVO<List<ProductVO>> list(HttpServletRequest request) {
+    // 跨域方法一：该方法支持跨域访问
+    @CrossOrigin(allowCredentials = "true")
+    public ResultVO<List<ProductVO>> list() {
         
         List<ProductInfo> productInfos = productService.findUpAll();
         List<ProductCategory> categoryList = categoryService.findByCategoryTypeIn(productInfos.stream()
