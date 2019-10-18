@@ -18,6 +18,14 @@ spring:
 #        myMessage:
 #          group: order
 #          content-type: application/json
+  sleuth:
+    sampler:
+      # 采样比例，默认 0.1 全部采样 1.0
+      probability: 1.0
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    sender:
+      type: web
 eureka:
   client:
     service-url:
@@ -28,25 +36,3 @@ eureka:
 #PRODUCT:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-
-# hystrix请求超时时间
-hystrix:
-  command:
-    # 默认的配置超时时间
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
-    # command key 对应的方法设置超时时间
-    getProductInfoList:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
-# hystrix dashboard 服务监控页面启用监控：http://localhost:8081/actuator/hystrix.stream
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

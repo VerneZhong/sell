@@ -7,8 +7,11 @@ brew cask install docker
 
 #网易的镜像地址：http://hub-mirror.c.163.com
 
-#Docker安装 rabbitmq方式：
+#Docker运行 rabbitmq方式：
 docker run -d --hostname zxb-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3.7.18-management
 
-# Docker安装Redis
+# Docker运行 Redis
 docker run -d -p 6379:6379 redis:5.0.6
+
+# Docker运行 zipkin
+docker run -d -p 9411:9411 openzipkin/zipkin
