@@ -14,6 +14,7 @@
         <module>sell_config</module>
         <module>sell_api_gateway</module>
         <module>sell_user</module>
+        <module>sell_eureka</module>
     </modules>
 
     <parent>

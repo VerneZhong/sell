@@ -15,3 +15,6 @@ docker run -d -p 6379:6379 redis:5.0.6
 
 # Docker运行 zipkin
 docker run -d -p 9411:9411 openzipkin/zipkin
+
+# Docker 运行 eureka
+docker run -p 8761:8761 -d hub.c.163.com/springcloud/eureka
