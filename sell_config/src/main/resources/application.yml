@@ -18,7 +18,7 @@ spring:
           basedir: /Users/zhongxuebin/IdeaProjects/sell/sell_config/basedir
 #          default-label: master
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     username: guest
     password: guest
@@ -27,7 +27,8 @@ eureka:
   client:
     service-url:
 #      defaultZone: http://192.168.1.105:8761/eureka/
-      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
 server:
   port: 8082
 management:

@@ -18,3 +18,13 @@ docker run -d -p 9411:9411 openzipkin/zipkin
 
 # Docker 运行 eureka
 docker run -p 8761:8761 -d hub.c.163.com/springcloud/eureka
+
+# CentOS docker 镜像加速
+vim /etc/docker/daemon.json
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+# 刷新配置
+systemctl daemon-reload
+# 重启docker
+systemctl restart docker
