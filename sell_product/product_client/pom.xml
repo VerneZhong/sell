@@ -21,7 +21,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-openfeign-core</artifactId>
-            <version>${spring-cloud-openfeign-core.version}</version>
         </dependency>
 
         <dependency>
@@ -31,8 +30,7 @@
 
         <dependency>
             <groupId>com.zxb</groupId>
-            <artifactId>product_common</artifactId>
-            <version>${product-common.version}</version>
+            <artifactId>sell_common</artifactId>
         </dependency>
     </dependencies>
 </project>

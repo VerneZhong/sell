@@ -1,14 +1,4 @@
-server:
-  port: 8761
-
+# java -jar -Dspring.profiles.active=eureka-1 target/*.jar
 spring:
-  application:
-    name: eureka
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: false
-  server:
-    enable-self-preservation: true
+  profiles:
+    active: eureka-1

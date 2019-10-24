@@ -1,4 +1,4 @@
-package com.zxb.product.common.domain;
+package com.zxb.common.product.domain;
 
 import lombok.Data;
 

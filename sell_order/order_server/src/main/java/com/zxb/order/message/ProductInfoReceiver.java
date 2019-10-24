@@ -1,8 +1,8 @@
 package com.zxb.order.message;
 
 import com.fasterxml.jackson.databind.JavaType;
-import com.zxb.product.common.domain.ProductInfoOutput;
-import com.zxb.product.common.util.JsonUtil;
+import com.zxb.common.product.domain.ProductInfoOutput;
+import com.zxb.common.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

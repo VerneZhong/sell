@@ -35,18 +35,16 @@
 
             <dependency>
                 <groupId>com.zxb</groupId>
+                <artifactId>sell_common</artifactId>
+                <version>${sell-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zxb</groupId>
                 <artifactId>order_common</artifactId>
                 <version>${order-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

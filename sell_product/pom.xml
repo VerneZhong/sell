@@ -29,25 +29,10 @@
 
             <dependency>
                 <groupId>com.zxb</groupId>
-                <artifactId>product-common</artifactId>
-                <version>${product-common.version}</version>
+                <artifactId>sell_common</artifactId>
+                <version>${sell-common.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

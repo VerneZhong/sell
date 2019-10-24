@@ -1,9 +1,8 @@
 package com.zxb.product.service;
 
-import com.zxb.product.common.domain.DecreaseStockInput;
-import com.zxb.product.common.domain.ProductInfoOutput;
-import com.zxb.product.common.util.JsonUtil;
-import com.zxb.product.dto.CartDTO;
+import com.zxb.common.product.domain.DecreaseStockInput;
+import com.zxb.common.product.domain.ProductInfoOutput;
+import com.zxb.common.util.JsonUtil;
 import com.zxb.product.enums.ProductStatusEnum;
 import com.zxb.product.enums.ResultEnum;
 import com.zxb.product.exception.ProductException;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 

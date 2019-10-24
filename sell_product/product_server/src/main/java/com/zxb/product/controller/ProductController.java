@@ -1,8 +1,7 @@
 package com.zxb.product.controller;
 
-import com.zxb.product.common.domain.DecreaseStockInput;
-import com.zxb.product.common.domain.ProductInfoOutput;
-import com.zxb.product.dto.CartDTO;
+import com.zxb.common.product.domain.DecreaseStockInput;
+import com.zxb.common.product.domain.ProductInfoOutput;
 import com.zxb.product.model.ProductCategory;
 import com.zxb.product.model.ProductInfo;
 import com.zxb.product.service.CategoryService;
@@ -14,9 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**

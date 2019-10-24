@@ -1,7 +1,7 @@
 package com.zxb.product.client;
 
-import com.zxb.product.common.domain.DecreaseStockInput;
-import com.zxb.product.common.domain.ProductInfoOutput;
+import com.zxb.common.product.domain.DecreaseStockInput;
+import com.zxb.common.product.domain.ProductInfoOutput;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 

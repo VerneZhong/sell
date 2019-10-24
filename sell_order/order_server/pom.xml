@@ -92,8 +92,12 @@
 
         <dependency>
             <groupId>com.zxb</groupId>
-            <artifactId>product_common</artifactId>
-            <version>${product-common.version}</version>
+            <artifactId>product_client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zxb</groupId>
+            <artifactId>sell_common</artifactId>
         </dependency>
 
         <dependency>

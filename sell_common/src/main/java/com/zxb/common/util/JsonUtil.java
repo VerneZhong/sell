@@ -1,4 +1,4 @@
-package com.zxb.product.common.util;
+package com.zxb.common.util;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;

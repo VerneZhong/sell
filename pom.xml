@@ -15,6 +15,7 @@
         <module>sell_api_gateway</module>
         <module>sell_user</module>
         <module>sell_eureka</module>
+        <module>sell_common</module>
     </modules>
 
     <parent>
@@ -32,6 +33,7 @@
         <product-common.version>1.0-SNAPSHOT</product-common.version>
         <product-client.version>1.0-SNAPSHOT</product-client.version>
         <order-common.version>1.0-SNAPSHOT</order-common.version>
+        <sell-common.version>1.0-SNAPSHOT</sell-common.version>
         <spring-cloud-openfeign-core.version>2.1.3.RELEASE</spring-cloud-openfeign-core.version>
         <spring-cloud-feign.version>1.4.4.RELEASE</spring-cloud-feign.version>
     </properties>

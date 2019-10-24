@@ -44,8 +44,8 @@
 
         <dependency>
             <groupId>com.zxb</groupId>
-            <artifactId>product_common</artifactId>
-            <version>${product-common.version}</version>
+            <artifactId>sell_common</artifactId>
+            <version>${sell-common.version}</version>
         </dependency>
 
         <dependency>
