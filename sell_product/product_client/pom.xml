@@ -14,7 +14,7 @@
 <!--
         将本地jar包推送到本地仓库
         mvn install:install-file -Dfile=product_common-1.0-SNAPSHOT.jar -DgroupId=com.zxb
-        -DartifactId=product_common -Dversion=2.0.1 -Dpackaging=jar
+        -DartifactId=product_common -Dversion=1.0-SNAPSHOT -Dpackaging=jar
         -->
 
     <dependencies>
